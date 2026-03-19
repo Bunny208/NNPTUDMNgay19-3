@@ -1,0 +1,179 @@
+{
+  "info": {
+    "name": "Inventory Management API",
+    "description": "API Collection for managing product inventory",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Product Management",
+      "item": [
+        {
+          "name": "Create Product",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"title\": \"Laptop Dell XPS 13\",\n  \"price\": 1200,\n  \"description\": \"High performance laptop\",\n  \"category\": \"{{CATEGORY_ID}}\",\n  \"images\": [\"https://placeimg.com/640/480/tech\"]\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/products",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "products"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Inventory Operations",
+      "item": [
+        {
+          "name": "Get All Inventories",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/inventory",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "inventory"]
+            }
+          }
+        },
+        {
+          "name": "Get Inventory by ID",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/api/v1/inventory/{{INVENTORY_ID}}",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "inventory", "{{INVENTORY_ID}}"]
+            }
+          }
+        },
+        {
+          "name": "Add Stock",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"{{PRODUCT_ID}}\",\n  \"quantity\": 100\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/inventory/add-stock",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "inventory", "add-stock"]
+            }
+          }
+        },
+        {
+          "name": "Remove Stock",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"{{PRODUCT_ID}}\",\n  \"quantity\": 10\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/inventory/remove-stock",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "inventory", "remove-stock"]
+            }
+          }
+        },
+        {
+          "name": "Reservation (Order)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"{{PRODUCT_ID}}\",\n  \"quantity\": 20\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/inventory/reservation",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "inventory", "reservation"]
+            }
+          }
+        },
+        {
+          "name": "Sold (Complete Order)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"product\": \"{{PRODUCT_ID}}\",\n  \"quantity\": 15\n}"
+            },
+            "url": {
+              "raw": "http://localhost:3000/api/v1/inventory/sold",
+              "protocol": "http",
+              "host": ["localhost"],
+              "port": "3000",
+              "path": ["api", "v1", "inventory", "sold"]
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "CATEGORY_ID",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "PRODUCT_ID",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "INVENTORY_ID",
+      "value": "",
+      "type": "string"
+    }
+  ]
+}
